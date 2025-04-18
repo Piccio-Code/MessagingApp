@@ -107,8 +107,10 @@ Pull requests welcome! For major changes, please open an issue first.
 
 ## 📜 License
 
-Distributed under the MIT License. See `LICENSE` for more information.
+Distributed under the MIT License. See `LICENSE` for more information [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT).
 
 ---
 
 Made with ❤️ by PiccioHub | [![GitHub](https://img.shields.io/badge/GitHub-Profile-blue)](https://github.com/Piccio-Code)
+
+
