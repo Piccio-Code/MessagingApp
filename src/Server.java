@@ -1,30 +1,23 @@
 import java.io.*;
 import java.net.*;
+import java.util.ArrayList;
 import java.util.Scanner;
 
 public class Server {
     public static void main(String[] args) {
-        System.out.println("Waiting .... ");
         try (ServerSocket ss = new ServerSocket(4444)) {
+            ArrayList<PrintWriter> out = new ArrayList<>();
+            while (true) {
+                Socket client = ss.accept();
 
-            Socket client = ss.accept();
-            Scanner scanner = new Scanner(System.in);
+                BufferedReader in= new BufferedReader(new InputStreamReader(client.getInputStream()));
+                out.add(new PrintWriter(client.getOutputStream(), true));
 
-            BufferedReader in = new BufferedReader(new InputStreamReader(client.getInputStream()));
-            PrintWriter out = new PrintWriter(client.getOutputStream(), true);
+                Thread clientInit = new Thread(new Broadcast(in, out));
 
-            Thread myTh = new Thread(new SendMessage(scanner, out));
+                clientInit.start();
 
-            myTh.start();
-            String message = in.readLine();
-
-            while (!message.equals("END")) {
-                System.out.println(message);
-                message = in.readLine();
             }
-
-            client.close();
-
         } catch (IOException e) {
             throw new RuntimeException(e);
         }
