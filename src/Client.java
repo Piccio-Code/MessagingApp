@@ -17,8 +17,9 @@ public class Client {
             myTh.start();
             String message = in.readLine();
 
-            while (!message.equals("END")) {
+            while (message != null && !message.equals("END")) {
                 System.out.println(message);
+                message = in.readLine();
             }
 
         } catch (IOException e) {

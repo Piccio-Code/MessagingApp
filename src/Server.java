@@ -20,6 +20,7 @@ public class Server {
 
             while (!message.equals("END")) {
                 System.out.println(message);
+                message = in.readLine();
             }
 
             client.close();
