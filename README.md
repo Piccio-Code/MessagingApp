@@ -111,6 +111,6 @@ Distributed under the MIT License. See `LICENSE` for more information [![License
 
 ---
 
-Made with ❤️ by PiccioHub | [![GitHub](https://img.shields.io/badge/GitHub-Profile-blue)](https://github.com/Piccio-Code)
+Made by PiccioHub | [![GitHub](https://img.shields.io/badge/GitHub-Profile-blue)](https://github.com/Piccio-Code)
 
 
