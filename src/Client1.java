@@ -11,7 +11,7 @@ public class Client1 {
             PrintWriter out = new PrintWriter(server.getOutputStream(), true);
             BufferedReader in = new BufferedReader(new InputStreamReader(server.getInputStream()));
 
-            Thread rely = new Thread(new RelyMessage(scanner, out, "Client 2"));
+            Thread rely = new Thread(new RelyMessage(scanner, out, "Client1", server));
             rely.start();
 
             while (true) {
@@ -19,8 +19,8 @@ public class Client1 {
 
                 System.out.println(message);
             }
-        } catch (IOException e) {
-            throw new RuntimeException(e);
+        } catch (Exception e) {
+            System.out.println("The client is disconnected");
         }
 
 
