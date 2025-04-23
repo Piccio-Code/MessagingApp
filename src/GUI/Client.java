@@ -17,15 +17,32 @@ public class Client extends Application {
 
     @Override
     public void start(Stage stage) throws Exception {
-        Parent root = FXMLLoader.load(Objects.requireNonNull(getClass().getResource("Design.fxml")));
-        Scene scene = new Scene(root, 1200, 720);
+        FXMLLoader clientLoader = new FXMLLoader(Objects.requireNonNull(getClass().getResource("Design.fxml")));
+        FXMLLoader loginLoader = new FXMLLoader(getClass().getResource("Login.fxml"));
+        String css = getClass().getResource("style.css").toExternalForm();
+
+        Parent loginRoot = loginLoader.load();
+        Scene login = new Scene(loginRoot, 1200, 720);
+
+
+        Parent clientRoot = clientLoader.load();
+        Scene client = new Scene(clientRoot, 1200, 720);
+
+        Controller controller = clientLoader.getController();
+        LoginController loginController = loginLoader.getController();
+
+        client.getStylesheets().add(css);
+
+        loginController.controller = controller;
+        loginController.stage = stage;
+        loginController.scene = client;
 
         stage.resizableProperty().set(false);
         stage.titleProperty().set("Bro Chat");
         stage.getIcons().add(new Image("GUI/Logo.png"));
-
         stage.setOnCloseRequest(_ -> System.out.println("Connection Close"));
-        stage.setScene(scene);
-        stage.show(); // to show the stage
+
+        stage.setScene(login);
+        stage.show();
     }
 }

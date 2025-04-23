@@ -21,6 +21,7 @@ public class Controller {
     Button sendBtn;
     @FXML
     HBox bottom;
+    String name;
 
     @FXML
     public void initialize() {
@@ -33,10 +34,14 @@ public class Controller {
         bottomInit();
     }
 
+    public void setName(String name) {
+        this.name = name;
+    }
+
     private void send() {
         String message = messageField.getText();
 
-        chatLog.getChildren().add(new Label(message));
+        chatLog.getChildren().add(new Label(name + ": "+ message));
 
         messageField.clear();
     }
@@ -60,7 +65,6 @@ public class Controller {
 
     private void sendBtnInit() {
         sendBtn.setOnAction(_ -> send());
-        sendBtn.setText("Send");
     }
 
     private void bottomInit() {

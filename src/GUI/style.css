@@ -1,0 +1,7 @@
+* {
+    -fx-font-family: "Arial";
+}
+
+.TextArea {
+    -fx-border-color:  #4CC9FE;
+}

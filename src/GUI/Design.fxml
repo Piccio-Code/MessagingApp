@@ -18,8 +18,8 @@
    <bottom>
       <HBox fx:id="bottom" prefHeight="100.0" prefWidth="1200.0" BorderPane.alignment="CENTER">
          <children>
-            <TextField fx:id="messageField" prefHeight="25.0" prefWidth="613.0" />
-            <Button fx:id="sendBtn" mnemonicParsing="false" prefHeight="25.0" prefWidth="167.0" text="Button" />
+            <TextField fx:id="messageField" prefHeight="25.0" prefWidth="613.0" promptText="Send a message" style="-fx-background-radius: 200; -fx-border-color: #4CC9FE; -fx-border-width: 1.5px; -fx-border-radius: 200; -fx-padding: 7;" />
+            <Button fx:id="sendBtn" mnemonicParsing="false" prefHeight="36.0" prefWidth="167.0" text="Send" />
          </children>
       </HBox>
    </bottom>
