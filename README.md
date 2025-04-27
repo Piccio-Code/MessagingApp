@@ -1,6 +1,6 @@
-# 📡 Java Multi-Client Chat Application
+# 📡 Java Multi-ServerClient.Client Chat Application
 
-A simple yet powerful multi-client chat server built with Java sockets and multi-threading. Broadcast messages in real-time to all connected clients! 🚀
+A simple yet powerful multi-client chat server built with Java sockets and multi-threading. ServerClient.Broadcast messages in real-time to all connected clients! 🚀
 
 ![Java](https://img.shields.io/badge/Java-17%2B-blue)
 ![Socket](https://img.shields.io/badge/Networking-Socket-orange)
@@ -11,7 +11,7 @@ A simple yet powerful multi-client chat server built with Java sockets and multi
 - **Real-time Messaging** 💬  
   Instantly send and receive messages across all connected clients.
 
-- **Multi-Client Support** 👥  
+- **Multi-ServerClient.Client Support** 👥  
   Handle multiple clients simultaneously using threads.
 
 - **Simple Architecture** 🏗️  
@@ -24,19 +24,19 @@ A simple yet powerful multi-client chat server built with Java sockets and multi
 
 ```mermaid
 graph TD
-  Server[Server] -->|Listens on Port 4444| Client1[Client 1]
-  Server -->|Broadcasts Messages| Client2[Client 2]
-  Server -->|Manages Connections| Client3[Client 3]
-  Client1 -->|Sends Messages| Server
-  Client2 -->|Sends Messages| Server
-  Client3 -->|Sends Messages| Server
+  ServerClient.Server[ServerClient.Server] -->|Listens on Port 4444| ServerClient.Client1[ServerClient.Client 1]
+  ServerClient.Server -->|Broadcasts Messages| ServerClient.Client2[ServerClient.Client 2]
+  ServerClient.Server -->|Manages Connections| Client3[ServerClient.Client 3]
+  ServerClient.Client1 -->|Sends Messages| ServerClient.Server
+  ServerClient.Client2 -->|Sends Messages| ServerClient.Server
+  Client3 -->|Sends Messages| ServerClient.Server
 ```
 
 ### Key Components
-- **`Server`**: Manages client connections and message broadcasting.
-- **`Client`**: Connects to server and handles I/O.
-- **`Broadcast`**: Thread task to relay messages between clients.
-- **`RelyMessage`**: Handles client-side message input.
+- **`ServerClient.Server`**: Manages client connections and message broadcasting.
+- **`ServerClient.Client`**: Connects to server and handles I/O.
+- **`ServerClient.Broadcast`**: Thread task to relay messages between clients.
+- **`ServerClient.RelyMessage`**: Handles client-side message input.
 
 ## 🚀 Getting Started
 
@@ -54,17 +54,17 @@ graph TD
 
 2. **Compile the Code**
    ```bash
-   javac Server.java Client.java Broadcast.java RelyMessage.java
+   javac ServerClient.Server.java ServerClient.Client.java ServerClient.Broadcast.java ServerClient.RelyMessage.java
    ```
 
-3. **Run the Server** (In separate terminal)
+3. **Run the ServerClient.Server** (In separate terminal)
    ```bash
-   java Server
+   java ServerClient.Server
    ```
 
 4. **Launch Clients** (In new terminals)
    ```bash
-   java Client
+   java ServerClient.Client
    ```
 
 5. **Start Chatting!**  
@@ -74,15 +74,15 @@ graph TD
 
 | Class           | Description                                                                 |
 |-----------------|-----------------------------------------------------------------------------|
-| `Server`        | Creates server socket, manages client connections and output streams       |
-| `Client`        | Connects to server, handles message input/output                           |
-| `Broadcast`     | Server-side thread that broadcasts messages to all clients (except sender) |
-| `RelyMessage`   | Client-side thread that sends user input to server                         |
+| `ServerClient.Server`        | Creates server socket, manages client connections and output streams       |
+| `ServerClient.Client`        | Connects to server, handles message input/output                           |
+| `ServerClient.Broadcast`     | ServerClient.Server-side thread that broadcasts messages to all clients (except sender) |
+| `ServerClient.RelyMessage`   | ServerClient.Client-side thread that sends user input to server                         |
 
 ## 🧠 Technical Highlights
 
 ```java
-// Server-side broadcasting logic (Broadcast.java)
+// ServerClient.Server-side broadcasting logic (ServerClient.Broadcast.java)
 for (int i = 0; i < out.size(); i++) {
     if (i == index) continue;  // Skip sender
     out.get(i).println(message);
@@ -90,7 +90,7 @@ for (int i = 0; i < out.size(); i++) {
 ```
 
 ```java
-// Client message input handling (RelyMessage.java)
+// ServerClient.Client message input handling (ServerClient.RelyMessage.java)
 message = name + ": " + scanner.nextLine();
 out.println(message);
 ```

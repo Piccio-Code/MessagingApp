@@ -1,6 +1,7 @@
+package ServerClient;
+
 import java.io.*;
 import java.net.*;
-import java.util.ArrayList;
 import java.util.Scanner;
 
 
@@ -11,7 +12,7 @@ public class Client1 {
             PrintWriter out = new PrintWriter(server.getOutputStream(), true);
             BufferedReader in = new BufferedReader(new InputStreamReader(server.getInputStream()));
 
-            Thread rely = new Thread(new RelyMessage(scanner, out, "Client1", server));
+            Thread rely = new Thread(new RelyMessage(scanner, out, "ServerClient.Client1", server));
             rely.start();
 
             while (true) {
