@@ -9,7 +9,7 @@ import javafx.stage.Stage;
 
 import java.util.Objects;
 
-public class Client extends Application {
+public class UI extends Application {
 
     public static void main(String[] args) {
         launch();
