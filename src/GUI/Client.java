@@ -32,6 +32,7 @@ public class Client extends Application {
         LoginController loginController = loginLoader.getController();
 
         client.getStylesheets().add(css);
+        login.getStylesheets().add(css);
 
         loginController.controller = controller;
         loginController.stage = stage;
@@ -39,7 +40,7 @@ public class Client extends Application {
 
         stage.resizableProperty().set(false);
         stage.titleProperty().set("Bro Chat");
-        stage.getIcons().add(new Image("GUI/Logo.png"));
+        stage.getIcons().add(new Image("GUI/Logo.jpeg"));
         stage.setOnCloseRequest(_ -> System.out.println("Connection Close"));
 
         stage.setScene(login);

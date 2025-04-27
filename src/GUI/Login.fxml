@@ -8,15 +8,14 @@
 <?import javafx.scene.paint.Color?>
 <?import javafx.scene.text.Font?>
 
-
-<AnchorPane prefHeight="720.0" prefWidth="1200.0" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="GUI.LoginController">
+<AnchorPane prefHeight="720.0" prefWidth="1200.0" stylesheets="@style.css" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="GUI.LoginController">
    <children>
-      <TextField fx:id="username" alignment="CENTER" layoutX="421.0" layoutY="360.0" prefHeight="72.0" prefWidth="358.0" promptText="Input the username" style="-fx-background-radius: 200; -fx-border-width: 1.5px; -fx-border-radius: 200; -fx-border-color: #4CC9FE;" AnchorPane.bottomAnchor="288.0" AnchorPane.leftAnchor="421.0" AnchorPane.rightAnchor="421.0" AnchorPane.topAnchor="360.0">
+      <TextField id="testo" fx:id="username" alignment="CENTER" layoutX="421.0" layoutY="360.0" prefHeight="72.0" prefWidth="358.0" promptText="Input the username" style="-fx-background-radius: 200; -fx-border-width: 1.5px; -fx-border-radius: 200;" stylesheets="@style.css" AnchorPane.bottomAnchor="288.0" AnchorPane.leftAnchor="421.0" AnchorPane.rightAnchor="421.0" AnchorPane.topAnchor="360.0">
          <font>
             <Font name="Arial" size="20.0" />
          </font>
       </TextField>
-      <Label id="Title" fx:id="Title" alignment="CENTER" prefHeight="337.0" prefWidth="1200.0" style="-fx-text-fill: #4CC9FE; -fx-font-weight: bold;" text="Bro Chat" textOverrun="CLIP">
+      <Label id="Title" fx:id="Title" alignment="CENTER" prefHeight="337.0" prefWidth="1200.0" style="-fx-text-fill: #4CC9FE; -fx-font-weight: bold;" stylesheets="@style.css" text="Bro Chat" textOverrun="CLIP">
          <font>
             <Font name="Arial Bold" size="80.0" />
          </font>

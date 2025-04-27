@@ -1,7 +1,41 @@
-* {
-    -fx-font-family: "Arial";
+#testo {
+    -fx-border-color:  #4CC9FE;
 }
 
-.TextArea {
-    -fx-border-color:  #4CC9FE;
+#send:hover{
+    -fx-background-color: white;
+    -fx-border-width: 2px;
+    -fx-border-color: #4CC9FE;
+    -fx-pref-width: 165;
+    -fx-pref-height: 35;
+    -fx-text-fill: #4CC9FE;
+}
+
+#send{
+    -fx-background-color: #4CC9FE;
+    -fx-text-fill: white;
+    -fx-font-weight: bold;
+    -fx-border-radius: 200px;
+    -fx-background-radius: 200px;
+    -fx-pref-width: 167;
+    -fx-pref-height: 37;
+    -fx-cursor: hand;
+}
+
+#send:pressed {
+    -fx-opacity: 0.75;
+}
+
+#Text {
+    -fx-pref-height: 20px;
+    -fx-font-size: 15px;
+    -fx-font-family: Arial;
+    -fx-padding: 22px 0 0 10px;
+}
+
+#Username {
+    -fx-font-size: 15px;
+    -fx-padding: 20px 0 0 30px;
+    -fx-pref-height: 40px;
+    -fx-font-weight: bold;
 }
