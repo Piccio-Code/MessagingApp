@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.ScrollPane?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.BorderPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.VBox?>
+
+<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="720.0" prefWidth="1200.0" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="GUI.Controller">
+   <center>
+      <ScrollPane fx:id="chatViewer" hbarPolicy="ALWAYS" prefHeight="200.0" prefWidth="200.0" vbarPolicy="ALWAYS" BorderPane.alignment="CENTER">
+         <content>
+            <VBox fx:id="chatLog" prefHeight="701.0" prefWidth="1330.0" />
+         </content>
+      </ScrollPane>
+   </center>
+   <bottom>
+      <HBox fx:id="bottom" prefHeight="100.0" prefWidth="1200.0" BorderPane.alignment="CENTER">
+         <children>
+            <TextField fx:id="messageField" prefHeight="25.0" prefWidth="613.0" promptText="Send a message" style="-fx-background-radius: 200; -fx-border-color: #4CC9FE; -fx-border-width: 1.5px; -fx-border-radius: 200; -fx-padding: 7;" />
+            <Button fx:id="sendBtn" mnemonicParsing="false" prefHeight="36.0" prefWidth="167.0" text="Send" />
+         </children>
+      </HBox>
+   </bottom>
+</BorderPane>
