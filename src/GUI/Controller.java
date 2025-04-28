@@ -57,6 +57,10 @@ public class Controller {
     }
 
 
+    public Color getColor() {
+        return color;
+    }
+
     @FXML
     public void initialize() throws IOException {
         chatViewerInit();
@@ -102,7 +106,7 @@ public class Controller {
         messageField.clear();
     }
 
-    public void display(String message, String name) {
+    public void display(String message, String name, String color) {
         HBox log = new HBox();
         String css = getClass().getResource("style.css").toExternalForm();
 
@@ -113,7 +117,7 @@ public class Controller {
 
         Label username = new Label(name + ":");
 
-        username.setTextFill(color);
+        username.setTextFill(Color.valueOf(color));
         username.getStylesheets().add(css);
         username.idProperty().set("Username");
 

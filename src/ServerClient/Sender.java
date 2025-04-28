@@ -15,6 +15,6 @@ public class Sender{
 
 
     public void send(String message) {
-        out.println(controller.getName() + ";" + message);
+        out.println(controller.getName() + ";" + message + ";" + controller.getColor().toString());
     }
 }

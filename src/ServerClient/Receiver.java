@@ -23,7 +23,7 @@ public class Receiver implements Runnable{
 
             while (true) {
                 Platform.runLater(() -> {
-                    controller.display(message.trim().split(";")[1], message.trim().split(";")[0]);
+                    controller.display(message.trim().split(";")[1], message.trim().split(";")[0], message.trim().split(";")[2]);
                 });
 
                 message = in.readLine();
