@@ -1,6 +1,3 @@
-Here's an updated, professional README for your GUI chat application:
-
-
 # 💬 Bro Chat - Modern JavaFX Chat Application
 
 ![Java](https://img.shields.io/badge/Java-17%2B-blue)
@@ -147,4 +144,3 @@ MIT License - See [LICENSE](LICENSE) for details
 ---
 
 **Bro Chat** - Made with ❤️ by Lorenzo Piccini @(Piccio Hub) | [![GitHub](https://img.shields.io/github/followers/yourprofile?style=social)](https://github.com/Piccio-Code)
-```
