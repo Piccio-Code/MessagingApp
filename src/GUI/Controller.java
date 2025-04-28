@@ -1,5 +1,6 @@
 package GUI;
 
+import ServerClient.Sender;
 import javafx.fxml.FXML;
 import javafx.geometry.Pos;
 import javafx.scene.control.Button;
@@ -10,7 +11,10 @@ import javafx.scene.input.KeyCode;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.VBox;
 import javafx.scene.paint.Color;
-import javafx.scene.paint.Paint;
+
+import java.io.IOException;
+import java.io.PrintWriter;
+import java.net.Socket;
 
 public class Controller {
     @FXML
@@ -25,6 +29,10 @@ public class Controller {
     HBox bottom;
     String name;
     Color color;
+    Socket server;
+    Sender sender;
+
+
     public static final Color[] CONTRASTING_COLORS = {
             Color.RED,          // Rosso acceso
             Color.DARKRED,      // Rosso scuro
@@ -43,9 +51,14 @@ public class Controller {
             Color.INDIGO        // Indaco
     };
 
+    public void setConnection(Socket socket, PrintWriter out) {
+        server = socket;
+        sender = new Sender(out, this);
+    }
+
 
     @FXML
-    public void initialize() {
+    public void initialize() throws IOException {
         chatViewerInit();
 
         sendBtnInit();
@@ -85,8 +98,31 @@ public class Controller {
 
         chatLog.getChildren().add(log);
 
+        sender.send(message);
         messageField.clear();
     }
+
+    public void display(String message, String name) {
+        HBox log = new HBox();
+        String css = getClass().getResource("style.css").toExternalForm();
+
+        Label text = new Label(message);
+
+        text.getStylesheets().add(css);
+        text.idProperty().set("Text");
+
+        Label username = new Label(name + ":");
+
+        username.setTextFill(color);
+        username.getStylesheets().add(css);
+        username.idProperty().set("Username");
+
+        log.getChildren().add(username);
+        log.getChildren().add(text);
+
+        chatLog.getChildren().add(log);
+    }
+
 
     private void chatViewerInit() {
         // Set the scroll pane to the right size
@@ -96,6 +132,10 @@ public class Controller {
         // Hide the horizontal and show the vertical one as needed
         chatViewer.setHbarPolicy(ScrollPane.ScrollBarPolicy.NEVER);
         chatViewer.setVbarPolicy(ScrollPane.ScrollBarPolicy.AS_NEEDED);
+    }
+
+    public String getName() {
+        return name;
     }
 
     private void messageFieldInit() {

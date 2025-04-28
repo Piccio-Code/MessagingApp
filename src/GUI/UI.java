@@ -1,12 +1,18 @@
 package GUI;
 
+import ServerClient.Receiver;
 import javafx.application.Application;
+import javafx.application.Platform;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.image.Image;
 import javafx.stage.Stage;
 
+import java.io.BufferedReader;
+import java.io.InputStreamReader;
+import java.io.PrintWriter;
+import java.net.Socket;
 import java.util.Objects;
 
 public class UI extends Application {
@@ -30,6 +36,15 @@ public class UI extends Application {
 
         Controller controller = clientLoader.getController();
         LoginController loginController = loginLoader.getController();
+
+        Socket socket = new Socket("localhost", 4444);
+        PrintWriter out = new PrintWriter(socket.getOutputStream(), true);
+        BufferedReader in = new BufferedReader(new InputStreamReader(socket.getInputStream()));
+
+        controller.setConnection(socket, out);
+        Thread myTh = new Thread(new Receiver(in, controller));
+        myTh.start();
+
 
         client.getStylesheets().add(css);
         login.getStylesheets().add(css);
