@@ -28,6 +28,9 @@ public class Controller {
     Button sendBtn;
     @FXML
     HBox bottom;
+    @FXML
+    Label usernameLabel;
+
     String name;
     Color color;
     Socket server;
@@ -77,6 +80,8 @@ public class Controller {
 
     public void setName(String name) {
         this.name = name.toUpperCase().charAt(0) + name.trim().substring(1).toLowerCase();
+        usernameLabel.setText(name);
+        usernameLabel.setTextFill(color);
     }
 
     private void send() {
