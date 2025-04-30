@@ -2,12 +2,14 @@ package ServerClient;
 
 import java.io.*;
 import java.net.*;
+import java.util.ArrayList;
 import java.util.HashMap;
 
 public class Server {
     public static void main(String[] args) {
         try (ServerSocket ss = new ServerSocket(4444)) {
             HashMap<Integer, PrintWriter> out = new HashMap<>();
+            ArrayList<String> usernames = new ArrayList<>();
             int count = 0;
 
             while (true) {
@@ -15,9 +17,8 @@ public class Server {
 
                 BufferedReader in= new BufferedReader(new InputStreamReader(client.getInputStream()));
                 out.put(count, new PrintWriter(client.getOutputStream(), true));
-                Thread clientInit = new Thread(new Broadcast(in, out, client, count));
+                new Thread(new Broadcast(in, out, count, client, usernames)).start();
                 count++;
-                clientInit.start();
             }
         } catch (IOException e) {
             throw new RuntimeException(e);

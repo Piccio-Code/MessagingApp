@@ -2,7 +2,6 @@ package GUI;
 
 import ServerClient.Receiver;
 import javafx.application.Application;
-import javafx.application.Platform;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
@@ -25,7 +24,7 @@ public class UI extends Application {
     public void start(Stage stage) throws Exception {
         FXMLLoader clientLoader = new FXMLLoader(Objects.requireNonNull(getClass().getResource("Design.fxml")));
         FXMLLoader loginLoader = new FXMLLoader(getClass().getResource("Login.fxml"));
-        String css = getClass().getResource("style.css").toExternalForm();
+        String css = Objects.requireNonNull(getClass().getResource("style.css")).toExternalForm();
 
         Parent loginRoot = loginLoader.load();
         Scene login = new Scene(loginRoot, 1200, 720);
@@ -42,16 +41,17 @@ public class UI extends Application {
         BufferedReader in = new BufferedReader(new InputStreamReader(socket.getInputStream()));
 
         controller.setConnection(socket, out);
-        Thread myTh = new Thread(new Receiver(in, controller));
-        myTh.start();
-
-
-        client.getStylesheets().add(css);
-        login.getStylesheets().add(css);
+        Thread mT = new Thread(new Receiver(in, controller));
 
         loginController.controller = controller;
         loginController.stage = stage;
         loginController.scene = client;
+        loginController.out = out;
+        loginController.in = in;
+        loginController.thread = mT;
+
+        client.getStylesheets().add(css);
+        login.getStylesheets().add(css);
 
         stage.resizableProperty().set(false);
         stage.titleProperty().set("Bro Chat");

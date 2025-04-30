@@ -15,6 +15,7 @@ import javafx.scene.paint.Color;
 import java.io.IOException;
 import java.io.PrintWriter;
 import java.net.Socket;
+import java.util.Objects;
 
 public class Controller {
     @FXML
@@ -84,7 +85,7 @@ public class Controller {
         if (message.isEmpty())
             return;
         HBox log = new HBox();
-        String css = getClass().getResource("style.css").toExternalForm();
+        String css = Objects.requireNonNull(getClass().getResource("style.css")).toExternalForm();
 
         Label text = new Label(message);
 
@@ -108,7 +109,7 @@ public class Controller {
 
     public void display(String message, String name, String color) {
         HBox log = new HBox();
-        String css = getClass().getResource("style.css").toExternalForm();
+        String css = Objects.requireNonNull(getClass().getResource("style.css")).toExternalForm();
 
         Label text = new Label(message);
 
