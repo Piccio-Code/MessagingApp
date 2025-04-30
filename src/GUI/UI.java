@@ -56,7 +56,7 @@ public class UI extends Application {
         stage.resizableProperty().set(false);
         stage.titleProperty().set("Bro Chat");
         stage.getIcons().add(new Image("GUI/Logo.jpeg"));
-        stage.setOnCloseRequest(_ -> System.out.println("Connection Close"));
+        stage.setOnCloseRequest(_ -> out.println("CLOSE_CONNECTION"));
 
         stage.setScene(login);
         stage.show();

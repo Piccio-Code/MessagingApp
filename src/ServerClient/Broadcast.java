@@ -46,14 +46,8 @@ public class Broadcast implements Runnable {
             System.out.println(usernames);
 
             String message = in.readLine();
-            boolean end = false;
 
-            while (!end){
-                if (message.split(";")[0].equals("END")){
-                    message = message.split(";")[1];
-                    end = true;
-                }
-
+            while (!message.equals("CLOSE_CONNECTION")){
                 for (int k : out.keySet()){
                     if (k == key)
                         continue;

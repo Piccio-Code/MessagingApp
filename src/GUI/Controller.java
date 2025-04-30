@@ -54,7 +54,7 @@ public class Controller {
 
     public void setConnection(Socket socket, PrintWriter out) {
         server = socket;
-        sender = new Sender(out, this);
+        sender = new Sender(out, this, socket);
     }
 
 
