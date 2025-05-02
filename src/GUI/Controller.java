@@ -80,7 +80,7 @@ public class Controller {
 
     public void setName(String name) {
         this.name = name.toUpperCase().charAt(0) + name.trim().substring(1).toLowerCase();
-        usernameLabel.setText(name);
+        usernameLabel.setText(this.name);
         usernameLabel.setTextFill(color);
     }
 

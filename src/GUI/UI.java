@@ -36,7 +36,7 @@ public class UI extends Application {
         Controller controller = clientLoader.getController();
         LoginController loginController = loginLoader.getController();
 
-        Socket socket = new Socket("localhost", 4444);
+        Socket socket = new Socket("localHost", 4444);
         PrintWriter out = new PrintWriter(socket.getOutputStream(), true);
         BufferedReader in = new BufferedReader(new InputStreamReader(socket.getInputStream()));
 

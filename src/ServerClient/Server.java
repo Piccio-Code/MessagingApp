@@ -9,7 +9,7 @@ public class Server {
     public static void main(String[] args) {
         try (ServerSocket ss = new ServerSocket(4444)) {
             HashMap<Integer, PrintWriter> out = new HashMap<>();
-            ArrayList<String> usernames = new ArrayList<>();
+            HashMap<Integer, String> usernames = new HashMap<>();
             int count = 0;
 
             while (true) {

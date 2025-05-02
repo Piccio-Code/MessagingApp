@@ -4,7 +4,6 @@ import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.PrintWriter;
 import java.net.Socket;
-import java.util.ArrayList;
 import java.util.HashMap;
 
 public class Broadcast implements Runnable {
@@ -13,9 +12,9 @@ public class Broadcast implements Runnable {
     private final HashMap<Integer, PrintWriter> out;
     private final int key;
     private final Socket connection;
-    private final ArrayList<String> usernames;
+    private final  HashMap<Integer, String> usernames;
 
-    public Broadcast(BufferedReader in, HashMap<Integer, PrintWriter> out, int key, Socket connection, ArrayList<String> usernames) {
+    public Broadcast(BufferedReader in, HashMap<Integer, PrintWriter> out, int key, Socket connection,  HashMap<Integer, String> usernames) {
         this.in = in;
         this.out = out;
         this.key = key;
@@ -28,22 +27,7 @@ public class Broadcast implements Runnable {
 
 
         try {
-            while (true) {
-                String username = in.readLine().trim().toLowerCase();
-
-                if (username.contains(" "))
-                    out.get(key).println("Not space allowed.");
-
-                if (!usernames.contains(username)){
-                    out.get(key).println("VALID_USERNAME");
-                    usernames.add(username.trim().toLowerCase());
-                    break;
-                }
-
-                out.get(key).println("Username already taken.");
-            }
-
-            System.out.println(usernames);
+            setUsername();
 
             String message = in.readLine();
 
@@ -58,10 +42,31 @@ public class Broadcast implements Runnable {
                 message = in.readLine();
             }
 
+            usernames.remove(key);
             out.remove(key);
             connection.close();
         } catch (IOException e) {
             throw new RuntimeException(e);
         }
+    }
+
+    private void setUsername() throws IOException {
+        while (true) {
+            String username = in.readLine().trim().toLowerCase();
+
+            if (username.contains(" "))
+                out.get(key).println("Not space allowed.");
+
+            synchronized (usernames) {
+                if (!usernames.containsValue(username)){
+                    out.get(key).println("VALID_USERNAME");
+                    usernames.put(key, username.trim().toLowerCase());
+                    break;
+                }
+            }
+            out.get(key).println("Username already taken.");
+        }
+
+        System.out.println(usernames);
     }
 }
