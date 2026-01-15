@@ -22,7 +22,9 @@ public class UI extends Application {
 
     @Override
     public void start(Stage stage) throws Exception {
-        try (Socket socket = new Socket("localHost", 4444)) {
+        Socket socket;
+        try {
+            socket = new Socket("localHost", 4444);
             FXMLLoader clientLoader = new FXMLLoader(Objects.requireNonNull(getClass().getResource("Design.fxml")));
             FXMLLoader loginLoader = new FXMLLoader(getClass().getResource("Login.fxml"));
             String css = Objects.requireNonNull(getClass().getResource("style.css")).toExternalForm();
